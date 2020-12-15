@@ -1,22 +1,22 @@
 part of app.model;
 
 class AttachmentModel extends Model {
-  final String _pictures;
+  final List<String> _pictures;
   final LocationModel _location;
 
   AttachmentModel({
-    String pictures,
+    @required List<String> pictures,
     LocationModel location,
-  }) :  _pictures = pictures,
+  }) :  _pictures = pictures ?? new List<String>(),
         _location = location;
 
   factory AttachmentModel.fromMap(Map<String, dynamic> data) =>
       AttachmentModel(
-        pictures: data['pictures'],
+        pictures: data['pictures'] as List,
         location: LocationModel.fromMap(
           data['location']));
 
-  String get pictures => _pictures;
+  List<String> get pictures => _pictures;
   LocationModel get location => _location;
 
   @override

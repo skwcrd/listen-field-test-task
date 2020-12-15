@@ -18,9 +18,27 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: kDebugMode,
       title: 'Test Task',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          brightness: Brightness.light,
+          iconTheme: const IconThemeData(
+            color: Colors.black,
+          ),
+        ),
+        cardTheme: CardTheme(
+          elevation: 2.0,
+          color: Colors.white,
+          shape: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.transparent,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(4.0)),
+          ),
+        ),
       ),
       home: IndexPage(),
     );

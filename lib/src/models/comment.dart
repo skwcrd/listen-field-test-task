@@ -8,14 +8,14 @@ class CommentModel extends Model {
   final UserModel _addedBy;
 
   CommentModel({
-    String id,
-    String text,
-    String status,
+    @required String id,
+    @required String text,
+    @required String status,
     String type,
     UserModel addedBy,
-  }) :  _id = id,
-        _text = text,
-        _status = status,
+  }) :  _id = id ?? 'unknown',
+        _text = text ?? 'unknown',
+        _status = status ?? 'unknown',
         _type = type,
         _addedBy = addedBy;
 

@@ -5,10 +5,10 @@ class CoordModel extends Model {
   final String _coordinates;
 
   CoordModel({
-    String type,
-    String coordinates,
-  }) :  _type = type,
-        _coordinates = coordinates;
+    @required String type,
+    @required String coordinates,
+  }) :  _type = type ?? 'unknown',
+        _coordinates = coordinates ?? 'unknown';
 
   factory CoordModel.fromMap(Map<String, dynamic> data) =>
       CoordModel(

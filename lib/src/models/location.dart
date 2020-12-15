@@ -5,9 +5,9 @@ class LocationModel extends Model {
   final CoordModel _coords;
 
   LocationModel({
-    String text,
+    @required String text,
     CoordModel coords,
-  }) :  _text = text,
+  }) :  _text = text ?? 'unknown',
         _coords = coords;
 
   factory LocationModel.fromMap(Map<String, dynamic> data) =>

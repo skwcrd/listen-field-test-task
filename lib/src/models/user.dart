@@ -7,12 +7,12 @@ class UserModel extends Model {
   final String _profilePicture;
 
   UserModel({
-    String id,
-    String name,
+    @required String id,
+    @required String name,
     String familyName,
     String profilePicture,
-  }) :  _id = id,
-        _name = name,
+  }) :  _id = id ?? 'unknown',
+        _name = name ?? 'unknown',
         _familyName = familyName,
         _profilePicture = profilePicture;
 
