@@ -1,0 +1,16 @@
+part of app.page;
+
+class IndexPage extends StatefulWidget {
+  const IndexPage({ Key key }) : super(key: key);
+
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    );
+  }
+}
