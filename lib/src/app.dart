@@ -19,6 +19,7 @@ class App extends StatelessWidget {
       title: 'Test Task',
       theme: ThemeData(
         brightness: Brightness.light,
+        disabledColor: Colors.grey,
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: AppBarTheme(

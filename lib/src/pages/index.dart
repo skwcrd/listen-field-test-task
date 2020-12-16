@@ -60,16 +60,14 @@ class _IndexPageState extends State<IndexPage> {
         automaticallyImplyLeading: false,
         title: Text(
           'Posts',
-          style: Theme.of(context)
-              .textTheme
-              .headline6,
+          style: context.textTheme.headline6,
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: _posts.map(
-            (post) => PostCard(
-              post: post,
+            (data) => PostCard(
+              data: data,
             )).toList(),
         ),
       ),
