@@ -6,7 +6,8 @@ import 'package:flutter/foundation.dart'
     kDebugMode,
     kProfileMode;
 
-import 'package:listen_field/src/pages/pages.dart';
+import 'utils/utils.dart';
+import 'pages/pages.dart';
 
 class App extends StatelessWidget {
   const App({ Key key }) : super(key: key);
@@ -17,30 +18,7 @@ class App extends StatelessWidget {
       showPerformanceOverlay: kProfileMode,
       debugShowCheckedModeBanner: kDebugMode,
       title: 'Test Task',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        disabledColor: Colors.grey,
-        scaffoldBackgroundColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        appBarTheme: AppBarTheme(
-          color: Colors.white,
-          brightness: Brightness.light,
-          iconTheme: const IconThemeData(
-            color: Colors.black,
-          ),
-        ),
-        cardTheme: CardTheme(
-          elevation: 2.0,
-          color: Colors.white,
-          shape: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.transparent,
-            ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8.0)),
-          ),
-        ),
-      ),
+      theme: ThemeApp.theme,
       home: IndexPage(),
     );
   }
