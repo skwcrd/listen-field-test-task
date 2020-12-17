@@ -13,8 +13,8 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  TextEditingController _controller;
   PostDataModel _post;
+  TextEditingController _controller;
 
   @override
   void initState() {
@@ -48,158 +48,46 @@ class _PostPageState extends State<PostPage> {
           ),
         ],
       ),
-      body: Stack(
+      body: Column(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    _post.text,
-                    style: context.textTheme.bodyText2,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Icon(
-                                Icons.favorite_outline,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                left: 8.0,
-                              ),
-                              child: Text(
-                                '0 likes',
-                                style: context.textTheme.bodyText2,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Icon(
-                                Icons.comment,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                left: 8.0,
-                              ),
-                              child: Text(
-                                '${widget.data.comments.length} comments',
-                                style: context.textTheme.bodyText2,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Divider(
-                    thickness: 2.0,
-                    indent: 16.0,
-                    endIndent: 16.0,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.4),
-                    spreadRadius: 1.0,
-                    blurRadius: 10.0,
-                    offset: Offset(0, 0), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Row(
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(4.0),
-                    child: IconButton(
-                      iconSize: 28.0,
-                      padding: const EdgeInsets.all(0.0),
-                      icon: Icon(
-                        Icons.camera_alt_outlined,
-                        color: Colors.grey,
-                      ),
-                      onPressed: () {
-                      },
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      _post.text,
+                      style: context.textTheme.bodyText2,
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 0.0,
-                        bottom: 0.0,
-                      ),
-                      child: TextField(
-                        controller: _controller,
-                        minLines: 1,
-                        maxLines: 6,
-                        textInputAction: TextInputAction.send,
-                        cursorColor: context.theme.primaryColor,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Comments',
-                          hintStyle: context.textTheme
-                              .bodyText2
-                              .copyWith(
-                                color: Colors.grey,
-                              ),
-                        ),
-                        onSubmitted: (value) {
-                          _onPost();
-                        },
-                      ),
-                    ),
+                  AmountWidget(
+                    comment: widget.data.commentLength,
+                    padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                   ),
                   Container(
-                    child: FlatButton(
-                      child: Text(
-                        'Post',
-                        style: TextStyle(
-                          fontSize: context.textTheme.headline6.fontSize,
-                        ),
-                      ),
-                      padding: const EdgeInsets.all(16.0),
-                      textTheme: context.theme.buttonTheme.textTheme,
-                      textColor: context.theme.primaryColor,
-                      disabledTextColor: context.theme.disabledColor,
-                      onPressed: _onPost,
+                    padding: const EdgeInsets.only(
+                      bottom: 8.0,
+                    ),
+                    child: Divider(
+                      thickness: 2.0,
+                      indent: 16.0,
+                      endIndent: 16.0,
                     ),
                   ),
+                  ...widget.data.comments.map<Widget>(
+                    (comment) => CommentWidget(
+                      data: comment,
+                    )),
                 ],
               ),
             ),
+          ),
+          CommentInputWidget(
+            data: widget.data,
           ),
         ],
       ),
     );
-  }
-
-  void _onPost() {
-    _controller.clear();
   }
 }

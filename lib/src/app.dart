@@ -37,7 +37,7 @@ class App extends StatelessWidget {
               color: Colors.transparent,
             ),
             borderRadius: const BorderRadius.all(
-              Radius.circular(4.0)),
+              Radius.circular(8.0)),
           ),
         ),
       ),

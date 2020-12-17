@@ -33,52 +33,11 @@ class PostCard extends StatelessWidget {
                     style: context.textTheme.bodyText2,
                   ),
                 ),
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Icon(
-                                Icons.favorite_outline,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                left: 8.0,
-                              ),
-                              child: Text(
-                                '0 likes',
-                                style: context.textTheme.bodyText2,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Icon(
-                                Icons.comment,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                left: 8.0,
-                              ),
-                              child: Text(
-                                '${data.comments.length} comments',
-                                style: context.textTheme.bodyText2,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                AmountWidget(
+                  comment: data.commentLength,
+                  padding: const EdgeInsets.only(
+                    top: 8.0,
+                    bottom: 8.0,
                   ),
                 ),
               ],

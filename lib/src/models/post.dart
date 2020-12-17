@@ -18,13 +18,28 @@ class PostModel extends Model {
       PostModel(
         post: PostDataModel.fromMap(
           data['post']),
-        comments: [
-          CommentModel.fromMap(
-            data['comments']),
-        ]);
+        // comments: [
+        //   CommentModel.fromMap(
+        //     data['comments']),
+        // ],
+      );
 
   PostDataModel get post => _post;
   List<CommentModel> get comments => _comments;
+
+  int get commentLength => _comments.length;
+
+  void addComment(CommentModel comment) {
+    if ( comment == null ) { return; }
+    _comments.add(comment);
+  }
+
+  void removeComment(String id) {
+    if ( id == null ) { return; }
+
+    _comments.removeWhere(
+      (comment) => comment.id == id);
+  }
 
   @override
   Map<String, dynamic> toMap() =>
